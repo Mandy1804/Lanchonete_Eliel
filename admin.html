@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lanchonete - Área Administrativa</title>
+    <link rel="stylesheet" href="../Lanchonete_Eliel/css/style.css"> 
+    
+    <style>
+        /* Estilos específicos para a área admin (Dashboard) */
+        #admin-main {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 30px;
+        }
+        /* (Se você copiou o novo CSS de dashboard, estes estilos já estão no style.css) */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🛠️ Área Administrativa da Lanchonete</h1>
+        <p><a href="../Lanchonete_Eliel/index.html">Voltar para o Cardápio</a></p>
+    </header>
+
+    <div id="admin-main">
+        
+        <section class="consulta-box">
+            <h3>👤 Cadastro de Novo Cliente</h3>
+            <label for="nomeCliente">Nome do Cliente:</label>
+            <input type="text" id="nomeCliente" placeholder="Nome completo" style="width: 250px;">
+            <button onclick="cadastrarNovoCliente()">Cadastrar</button>
+            <p id="msg-cliente" style="margin-top: 10px;"></p>
+        </section>
+
+        <section class="consulta-box">
+            <h3>➕ Entrada de Estoque</h3>
+            <p>Adicione estoque a um item existente (após vendas/esgotamento)</p>
+            <label for="itemId">ID do Item:</label>
+            <input type="number" id="itemId" placeholder="Ex: 1" value="1">
+            <label for="quantidadeEntrada">Quantidade:</label>
+            <input type="number" id="quantidadeEntrada" placeholder="Ex: 10" value="10">
+            <button onclick="entradaEstoque()">Confirmar Entrada</button>
+            <p id="msg-estoque" style="margin-top: 10px;"></p>
+        </section>
+        
+        <section class="consulta-box">
+            <h3>Lista de Itens com Estoque Zerado</h3>
+            <button onclick="carregarItensZerados()">Recarregar</button>
+            <table id="tabela-estoque-zerado">
+                <thead>
+                    <tr><th>ID</th><th>Nome</th><th>Tipo</th><th>Estoque</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="4">Carregando dados...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="consulta-box">
+            <h3>Clientes que Mais Gastaram</h3>
+            <button onclick="carregarClientesMaisGastaram()">Recarregar</button>
+            <table id="tabela-clientes-top">
+                <thead>
+                    <tr><th>Posição</th><th>ID Cliente</th><th>Nome</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3">Carregando dados...</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="consulta-box">
+            <h3>🔍 Listagem de Vendas por Cliente</h3>
+            <label for="input-cliente-id">ID do Cliente:</label>
+            <input type="number" id="input-cliente-id" placeholder="Ex: 1" value="1">
+            <button onclick="carregarVendasPorCliente()">Buscar Vendas</button>
+            <table id="tabela-vendas-cliente">
+                <thead>
+                    <tr><th>ID Venda</th><th>Total</th><th>Data/Hora</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3">Informe o ID e busque.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="consulta-box">
+            <h3>📅 Listagem de Vendas por Dia</h3>
+            <label for="input-data">Data (YYYY-MM-DD):</label>
+            <input type="date" id="input-data" value="2025-11-06"> 
+            <button onclick="carregarVendasPorDia()">Buscar Vendas</button>
+            <table id="tabela-vendas-dia">
+                <thead>
+                    <tr><th>ID Venda</th><th>Cliente</th><th>Total</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td colspan="3">Informe a data e busque.</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script src="../Lanchonete_Eliel/js/admin.js"></script>
+
+</body>
+</html>
